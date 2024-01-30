@@ -1,31 +1,60 @@
-﻿namespace chess1.Figures;
+﻿namespace ClassicGame;
+using ClassicGameLibrary;
 class Rook
 {
-    bool move = false;
-    public void CanRookMoveOrNot(FigureName figure)
+    public FigureColor color;
+
+    //bool move = false;
+    ///// <summary>
+    ///// Checks, if the Rook can move or not
+    ///// </summary>
+    ///// <param name="figure">The name of figure</param>
+    //public void CanMoveOrNot()
+    //{
+    //   // Symbol symbol = new Symbol();
+    //    ChessBoard chess = new ChessBoard();
+    //    Print print = new Print();
+    //   // Input input = new Input();
+
+    //    print.PrintTextForInitalCoordinate(FigureName.Rook);
+    //    Coordinates coord = new Coordinates(Console.ReadLine());
+    //   // symbol.CheckIsTheCoordRight(coord, SymbolOfFigure.R);
+    //    //int numberCoord = coord.numberCoordinate;
+    //    //Letters letterCoord = coord.letterCoordinate;
+    //    int numberCoord = coord.ReturnsNumberCoordinate();
+    //    Letters letterCoord = coord.ReturnsLetterCoordinate();
+
+    //    print.PrintTextForDestinationCoordinate(FigureName.Rook);
+    //    Coordinates moveCoord = new Coordinates(Console.ReadLine());
+    //    //int numberMoveCoord = moveCoord.numberCoordinate;
+    //    //Letters letterMoveCoord = moveCoord.letterCoordinate;
+    //    int numberMoveCoord = moveCoord.ReturnsNumberCoordinate();
+    //    Letters letterMoveCoord = moveCoord.ReturnsLetterCoordinate();
+
+    //    int x = Math.Abs(numberCoord - numberMoveCoord);
+    //    int y = Math.Abs(letterCoord - letterMoveCoord);
+
+    //    if (x == 0 || y == 0)
+    //    {
+    //        move = true;
+    //       // symbol.PrintSymbol(chess.array, moveCoord, SymbolOfFigure.R);
+    //    }
+    //    print.PrintMove(move);
+    //}
+    PrintText print = new PrintText();
+    Validate validate = new Validate();
+    bool validCoordinate;
+    // public Coordinates coord;
+    public Coordinates input;
+
+    public void ValidateCoordinates()
     {
-        Symbol symbol = new Symbol();
-
-        Console.WriteLine($"Enter the coordinate for {figure}");
-        Coordinates coord = new Coordinates(Console.ReadLine());
-        symbol.CheckIsTheCoordRight(coord, SymbolOfFigure.R);
-        int numberCoord = coord.ReturnsNumberCoordinate();
-        Letters letterCoord = coord.ReturnsLetterCoordinate();
-
-        Console.WriteLine($"Enter the move coordinate for {figure}");
-        Coordinates moveCoord = new Coordinates(Console.ReadLine());
-        int numberMoveCoord = moveCoord.ReturnsNumberCoordinate();
-        Letters letterMoveCoord = moveCoord.ReturnsLetterCoordinate();
-
-        int x = Math.Abs(numberCoord - numberMoveCoord);
-        int y = Math.Abs(letterCoord - letterMoveCoord);
-
-        if (x == 0 || y == 0)
-        {
-            move = true;
-            symbol.CheckIsTheCoordRight(moveCoord, SymbolOfFigure.R);
-        }
-        Knight knight = new Knight();
-        knight.PrintMove(move);
+        print.PrintTextForFigureCoord(FigureName.Rook);
+        //input = Console.ReadLine();
+        Coordinates coordinate = new Coordinates(Console.ReadLine());
+        input = coordinate;
+        //coordinate.ParseCoordinate(input);
+        validate.CheckIsTheCoordRight(coordinate);
+        validCoordinate = validate.validCoord;
     }
 }

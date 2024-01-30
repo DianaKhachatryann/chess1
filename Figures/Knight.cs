@@ -1,42 +1,56 @@
-﻿namespace chess1.Figures;
+﻿namespace ClassicGame.Figures;
+using ClassicGameLibrary;
 class Knight
 {
-    int[,] CoordinateArray = { { 1, 2 }, { 1, -2 }, { -1, 2 }, { -1, -2 }, { 2, 1 }, { 2, -1 }, { -2, 1 }, { -2, -1 } };
-    bool move= false;
-   public void CanKnightMoveOrNot(FigureName figure)
-    {
-        Symbol symbol = new Symbol();
-        
-        Console.WriteLine($"Enter the coordinate for {figure}");
-        Coordinates coord = new Coordinates(Console.ReadLine());
-        symbol.CheckIsTheCoordRight(coord, SymbolOfFigure.N);
-        int numberCoord = coord.ReturnsNumberCoordinate();
-        Letters letterCoord = coord.ReturnsLetterCoordinate();
+    public FigureColor color;
 
-        Console.WriteLine($"Enter the move coordinate for {figure}");
-        Coordinates moveCoord = new Coordinates(Console.ReadLine());
-        int numberMoveCoord = moveCoord.ReturnsNumberCoordinate();
-        Letters letterMoveCoord = moveCoord.ReturnsLetterCoordinate();
+    //int[,] CoordinateArray = { { 1, 2 }, { 1, -2 }, { -1, 2 }, { -1, -2 }, { 2, 1 }, { 2, -1 }, { -2, 1 }, { -2, -1 } };
+    //bool move= false;
+    ///// <summary>
+    ///// Checks, if the Knight can move or not
+    ///// </summary>
+    ///// <param name="figure">The name of the figure</param>
+    //public void CanMoveOrNot()
+    //{
+    //   // Symbol symbol = new Symbol();
+    //    ChessBoard chess = new ChessBoard();
+    //    Print print = new Print();
+    //    Validate validate = new Validate();    
 
-        int x = Math.Abs(numberCoord - numberMoveCoord);
-        int y = Math.Abs((int)letterCoord - (int)letterMoveCoord);
+    //    print.PrintTextForInitalCoordinate(FigureName.Knight);
+    //    Coordinates coord = new Coordinates(Console.ReadLine());
+    //    validate.CheckIsTheCoordRight(coord);
+    //    //int numberCoord = coord.numberCoordinate;
+    //    //Letters letterCoord = coord.letterCoordinate;
+    //    int numberCoord = coord.ReturnsNumberCoordinate();
+    //    Letters letterCoord = coord.ReturnsLetterCoordinate();
 
-        for (int i = 0; i < 8; i++)
-        {
-            if (x == CoordinateArray[i, 0] && y == CoordinateArray[i, 1])
-            {
-                move = true;
-                break;
-            }            
-        }
-        if (move)
-        {
-            symbol.CheckIsTheCoordRight(moveCoord, SymbolOfFigure.N);
-        }
-        PrintMove(move);
-    }
-    public void PrintMove(bool move)
-    {
-        Console.WriteLine(move);
-    }
+    //    print.PrintTextForDestinationCoordinate(FigureName.Knight);
+    //    Coordinates moveCoord = new Coordinates(Console.ReadLine());
+    //    //int numberMoveCoord = moveCoord.numberCoordinate;
+    //    //Letters letterMoveCoord = moveCoord.letterCoordinate;
+    //    int numberMoveCoord = moveCoord.ReturnsNumberCoordinate();
+    //    Letters letterMoveCoord = moveCoord.ReturnsLetterCoordinate();
+
+    //    int x = Math.Abs(numberCoord - numberMoveCoord);
+    //    int y = Math.Abs((int)letterCoord - (int)letterMoveCoord);
+
+    //    for (int i = 0; i < 8; i++)
+    //    {
+    //        if (x == CoordinateArray[i, 0] && y == CoordinateArray[i, 1])
+    //        {
+    //            move = true;
+    //            break;
+    //        }            
+    //    }
+    //    if (move)
+    //    {
+    //       // symbol.PrintSymbol(chess.array, moveCoord, SymbolOfFigure.N);
+
+    //    }
+    //    print.PrintMove(move);
 }
+//public void PrintMove(bool move)
+//{
+//    Console.WriteLine("\n" + move);
+//}

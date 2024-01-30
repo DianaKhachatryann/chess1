@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chess1", "chess1.csproj", "{FECD0A15-9059-4925-A455-ADC6BA3A95C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassicGame", "ClassicGame.csproj", "{FECD0A15-9059-4925-A455-ADC6BA3A95C9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C14F5928-6722-43E2-B942-C193702BFC17} = {C14F5928-6722-43E2-B942-C193702BFC17}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicGameLibrary", "..\ChessLibrary\ClassicGameLibrary.csproj", "{C14F5928-6722-43E2-B942-C193702BFC17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{FECD0A15-9059-4925-A455-ADC6BA3A95C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FECD0A15-9059-4925-A455-ADC6BA3A95C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FECD0A15-9059-4925-A455-ADC6BA3A95C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C14F5928-6722-43E2-B942-C193702BFC17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C14F5928-6722-43E2-B942-C193702BFC17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C14F5928-6722-43E2-B942-C193702BFC17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C14F5928-6722-43E2-B942-C193702BFC17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

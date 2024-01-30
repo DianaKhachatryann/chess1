@@ -1,21 +1,30 @@
-﻿namespace chess1.Figures;
+﻿namespace ClassicGame.Figures;
+using ClassicGameLibrary;
 class Bishop
 {
     bool move = false;
-    public void CanBishopMoveOrNot(FigureName figure)
+    public FigureColor color;
+    /// <summary>
+    /// Checks, if the Bishop can move or not
+    /// </summary>
+    /// <param name="figure">The name of the figure</param>
+    public void CanMoveOrNot()
     {
-        Symbol symbol = new Symbol();
+        
+        ChessBoard chess = new ChessBoard();
+        Print print = new Print();
 
-        Console.WriteLine($"Enter the coordinate for {figure}");
+        print.PrintTextForInitalCoordinate(FigureName.Bishop);
         Coordinates coord = new Coordinates(Console.ReadLine());
-        symbol.CheckIsTheCoordRight(coord, SymbolOfFigure.B);
-        int numberCoord = coord.ReturnsNumberCoordinate();
-        Letters letterCoord = coord.ReturnsLetterCoordinate();
+        
+        int numberCoord = coord.number;
+        Letters letterCoord = coord.letter;
 
-        Console.WriteLine($"Enter the move coordinate for {figure}");
+        print.PrintTextForDestinationCoordinate(FigureName.Bishop);
         Coordinates moveCoord = new Coordinates(Console.ReadLine());
-        int numberMoveCoord = moveCoord.ReturnsNumberCoordinate();
-        Letters letterMoveCoord = moveCoord.ReturnsLetterCoordinate();
+        
+        int numberMoveCoord = moveCoord.number;
+        Letters letterMoveCoord = moveCoord.letter;
 
         int x = Math.Abs(numberCoord - numberMoveCoord);
         int y = Math.Abs(letterCoord - letterMoveCoord);
@@ -23,9 +32,8 @@ class Bishop
         if (x == y)
         {
             move = true;
-            symbol.CheckIsTheCoordRight(moveCoord, SymbolOfFigure.B);
+            
         }
-        Knight knight = new Knight();
-        knight.PrintMove(move);
+        print.PrintMove(move);
     }
 }

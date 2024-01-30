@@ -1,6 +1,8 @@
-﻿namespace chess1;
+﻿namespace ClassicGame;
 class ChessBoard
-{
+{/// <summary>
+/// Creates the chess board
+/// </summary>
     public string[,] array = new string[8, 8];
     int a = 0;
     public void CreateBoard(string[,] array)
@@ -18,7 +20,7 @@ class ChessBoard
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Gray;
                     array[i, j] = "   ";
                 }
                 PrintBoard(array);
@@ -26,6 +28,10 @@ class ChessBoard
             Console.WriteLine();
         }
     }
+    /// <summary>
+    /// Prints the chess board
+    /// </summary>
+    /// <param name="array"></param>
     public void PrintBoard(string[,] array)
     {
         for (int i = 0; i < 1; i++)
@@ -38,10 +44,16 @@ class ChessBoard
             }
         }
     }
+    /// <summary>
+    /// Prints numbers next to the board(1-8)
+    /// </summary>
     public void PrintNumbersNextToBoard()
     {
         Console.Write(++a + " ");
     }
+    /// <summary>
+    /// Prints letters next to the board (A-H)
+    /// </summary>
     public void PrintLettersNextToBoard()
     {
         for (char k = 'A'; k <= 'H'; k++)
