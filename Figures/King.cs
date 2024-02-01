@@ -42,17 +42,13 @@ class King
     //}
     PrintText print = new PrintText();
     Validate validate = new Validate();
-    bool validCoordinate;
-    // public Coordinates coord;
-    public Coordinates input;
+    public bool valid;
+    public Coordinates input = new Coordinates();
     public void ValidateCoordinates()
     {
         print.PrintTextForFigureCoord(FigureName.King);
-        //input = Console.ReadLine();
         Coordinates coordinate = new Coordinates(Console.ReadLine());
-        //coordinate.ParseCoordinate(input);
         input = coordinate;
-        validate.CheckIsTheCoordRight(coordinate);
-        validCoordinate = validate.validCoord;
+        valid = validate.CheckIsTheCoordRight(coordinate);
     }
 }

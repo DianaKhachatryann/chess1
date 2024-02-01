@@ -2,7 +2,6 @@
 using ClassicGameLibrary;
 class PrintSymbol
 {
-    //Coordinates coordinates = new Coordinates();
     ChessBoard chess = new ChessBoard();
     Validate validate = new Validate();
 
@@ -15,7 +14,7 @@ class PrintSymbol
     {
         if (validate.CheckIsTheCoordRight(coord))
         {
-            PrintSymbolOnTheBoard(chess.array, coord);//, symbol);
+            PrintSymbolOnTheBoard(chess.array, coord);
         }
         else
         {
@@ -28,7 +27,7 @@ class PrintSymbol
     /// <param name="array">array for board</param>
     /// <param name="coord">The coordinates user entered</param>
     /// <param name="symbol">Figure's symbol</param>  
-    public void PrintSymbolOnTheBoard(string[,] array, Coordinates coord)//, SymbolOfFigure symbol)
+    public void PrintSymbolOnTheBoard(string[,] array, Coordinates coord)
     {
         int numberCoord = coord.number;
         Letters letterCoord = coord.letter;
@@ -74,47 +73,6 @@ class PrintSymbol
     }
     public void PrintSymbolOnTheBoard(SymbolOfFigure symbol)
     {
-        //Console.ForegroundColor = ConsoleColor.Blue;
         Console.Write($"{symbol} ");
     }
 }
-    //chess.PrintLettersNextToBoard();
-    //for (int i = 0; i < 8; i++)
-    //{
-    //    chess.PrintNumbersNextToBoard();
-    //    for (int j = 0; j < 8; j++)
-    //    {
-    //        if ((i + j) % 2 == 0)
-    //        {
-    //            Console.BackgroundColor = ConsoleColor.White;
-    //            if (i == numberCoord - 1 && j == (int)letterCoord)
-    //            {
-    //                array[i, j] = " ";
-    //            }
-    //            else
-    //            {
-    //                array[i, j] = "   ";
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Console.BackgroundColor = ConsoleColor.DarkGray;
-    //            if (i == numberCoord - 1 && j == (int)letterCoord)
-    //            {
-    //                array[i, j] = " ";
-    //            }
-    //            else
-    //            {
-    //                array[i, j] = "   ";
-    //            }
-    //        }
-    //        Console.Write(array[i, j]);
-    //        if (i == numberCoord - 1 && j == (int)letterCoord)
-    //        {
-    //            PrintSymbolOnTheBoard(SymbolOfFigure.N);
-    //        }
-    //        Console.ResetColor();
-    //    }
-    //    Console.WriteLine();
-    //}
-

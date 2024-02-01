@@ -43,18 +43,14 @@ class Rook
     //}
     PrintText print = new PrintText();
     Validate validate = new Validate();
-    bool validCoordinate;
-    // public Coordinates coord;
-    public Coordinates input;
+    public bool valid;
+    public Coordinates input = new Coordinates();
 
     public void ValidateCoordinates()
     {
         print.PrintTextForFigureCoord(FigureName.Rook);
-        //input = Console.ReadLine();
         Coordinates coordinate = new Coordinates(Console.ReadLine());
         input = coordinate;
-        //coordinate.ParseCoordinate(input);
-        validate.CheckIsTheCoordRight(coordinate);
-        validCoordinate = validate.validCoord;
+        valid = validate.CheckIsTheCoordRight(coordinate);
     }
 }

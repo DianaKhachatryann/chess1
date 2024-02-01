@@ -1,160 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassicGame;
+﻿namespace ClassicGame;
 using ClassicGameLibrary;
 using global::ClassicGame.Figures;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.Security.Cryptography.X509Certificates;
-
 class PrintTeams
 {
-    Rook rook1 = new Rook();
-    Rook rook2 = new Rook();
-    King whiteKing = new King();
-    King blackKing = new King();
-    Queen queen = new Queen();
-    Validate validate = new Validate();
     ChessBoard chess = new ChessBoard();
-    PrintSymbol symbol = new PrintSymbol();
-    public Coordinates currentCoord;
+    public Coordinates currentCoord = new Coordinates();
     public Coordinates[] coordArray;
-    public PrintTeams()
+    public Coordinates c = new Coordinates();
+    public void PrintFiguresLetterOnTheBoard(string[,] array, Coordinates rook1Coord, Coordinates rook2Coord,
+        Coordinates queenCoord, Coordinates blackKingCoord, Coordinates whiteKingCoord)
     {
-        InitializeTeamCoordinates();
-    }
-
-    public void PrintTeamsOnTheBoard()
-    {
-
-        if ((validate.validCoord == true) && (validate.check == false) && (validate.diffLocation == true))
-        {
-            PrintFiguresLetterOnTheBoard(chess.array);
-        }
-        else
-        {
-            Console.WriteLine("Smth is wrong, try again!");
-        }
-    }
-    public void InitializeTeamCoordinates()
-    {
-
-        coordArray = new Coordinates[] { rook1.input, rook2.input, queen.input, blackKing.input, whiteKing.input };
-
-    }
-    public void PrintFiguresLetterOnTheBoard(string[,] array)
-    {
-
+        coordArray = new Coordinates[] { rook1Coord, rook2Coord, queenCoord, blackKingCoord, whiteKingCoord };
+        Coordinates currentCoordRook1 = rook1Coord;
+        Coordinates currentCoordRook2 = rook2Coord;
+        Coordinates currentCoordQueen = queenCoord;
+        Coordinates currentCoordBlackKing = blackKingCoord;
+        Coordinates currentCoordWhiteKing = whiteKingCoord;
         chess.PrintLettersNextToBoard();
         for (int i = 0; i < 8; i++)
         {
             chess.PrintNumbersNextToBoard();
             for (int j = 0; j < 8; j++)
             {
-                if ((i + j) % 2 == 0)
+                for (int index = 0; index < 5; index++)
                 {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    if (i == currentCoord.number - 1 && j == (int)currentCoord.letter)
+                    c = coordArray[index];
+                    if ((i + j) % 2 == 0)
                     {
-                        array[i, j] = " ";
+                        array[i, j] = "   ";
+                        Console.BackgroundColor = ConsoleColor.Red;
                     }
                     else
                     {
                         array[i, j] = "   ";
-                    }
-                }
-                else
-                {
-                    Console.BackgroundColor = ConsoleColor.DarkGray;
-                    if (i == currentCoord.number - 1 && j == (int)currentCoord.letter)
-                    {
                         Console.BackgroundColor = ConsoleColor.DarkGray;
-
-                        array[i, j] = " ";
-                    }
-                    else
-                    {
-                        array[i, j] = "   ";
                     }
                 }
-                Console.Write(array[i, j]);
-                currentCoord = rook1.input;
-                if (i == currentCoord.number && j == (int)currentCoord.letter)
+                if (i == currentCoordRook1.number-1 && j == (int)currentCoordRook1.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(SymbolOfFigure.R);
-                    //SymbolForCoordinates(currentCoord);
+                    array[i, j] = "";
+                    Console.Write($" {SymbolOfFigure.R} ");
                 }
-                currentCoord = rook2.input;
-                if (i == currentCoord.number && j == (int)currentCoord.letter)
+                if (i == currentCoordRook2.number-1 && j == (int)currentCoordRook2.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(SymbolOfFigure.R);
-
-                    //SymbolForCoordinates(currentCoord);
+                    array[i, j] = "";
+                    Console.Write($" {SymbolOfFigure.R} ");
                 }
-                currentCoord = queen.input;
-                if (i == currentCoord.number && j == (int)currentCoord.letter)
+                if (i == currentCoordQueen.number-1 && j == (int)currentCoordQueen.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write(SymbolOfFigure.Q);
-
-                    // SymbolForCoordinates(currentCoord);
+                    array[i, j] = "";
+                    Console.Write($" {SymbolOfFigure.Q} ");
                 }
-                currentCoord = blackKing.input;
-                if (i == currentCoord.number && j == (int)currentCoord.letter)
+                if (i == currentCoordBlackKing.number-1 && j == (int)currentCoordBlackKing.letter)
                 {
-                    //    //Console.ForegroundColor = ConsoleColor.Black;
-                    //    //Console.Write(SymbolOfFigure.K);
-
-                    //SymbolForCoordinates(currentCoord);
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    array[i, j] = "";
+                    Console.Write($" {SymbolOfFigure.K} ");
                 }
-                currentCoord = whiteKing.input;
-                if (i == currentCoord.number && j == (int)currentCoord.letter)
+                if (i == currentCoordWhiteKing.number-1 && j == (int)currentCoordWhiteKing.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(SymbolOfFigure.K);
-
-                    //SymbolForCoordinates(currentCoord);
+                    array[i, j] = "";
+                    Console.Write($" {SymbolOfFigure.K} ");
                 }
+                Console.Write(array[i, j]);
             }
             Console.ResetColor();
             Console.WriteLine();
         }
     }
-    public void SymbolForCoordinates(Coordinates currentCoord)
-    {
-
-        if (currentCoord.Equals(rook1.input))
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(SymbolOfFigure.R);
-        }
-        else if (currentCoord.Equals(rook2.input))
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(SymbolOfFigure.R);
-        }
-        else if (currentCoord.Equals(queen.input))
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(SymbolOfFigure.Q);
-        }
-        else if (currentCoord.Equals(blackKing.input))
-        {
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(SymbolOfFigure.K);
-        }
-        else if (currentCoord.Equals(whiteKing.input))
-        {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write(SymbolOfFigure.K);
-        }
-    }
 }
-

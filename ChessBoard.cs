@@ -20,7 +20,7 @@ class ChessBoard
                 }
                 else
                 {
-                    Console.BackgroundColor = ConsoleColor.Gray;
+                    Console.BackgroundColor = ConsoleColor.Red;
                     array[i, j] = "   ";
                 }
                 PrintBoard(array);

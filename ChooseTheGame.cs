@@ -2,7 +2,9 @@
 using ClassicGameLibrary;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -37,8 +39,6 @@ class ClassicGame
         ChessBoard chess = new ChessBoard();
         chess.CreateBoard(chess.array);
 
-       
-
         Knight knight = new Knight();
        // knight.CanMoveOrNot();
 
@@ -60,25 +60,40 @@ class QueenGame
     public void Run()
     {
         Rook rook1 = new Rook();
+        rook1.color = FigureColor.Black;
         rook1.ValidateCoordinates();
 
         Rook rook2 = new Rook();
+        rook2.color = FigureColor.Black;
         rook2.ValidateCoordinates();
 
         Queen queen = new Queen();
+        queen.color = FigureColor.Black;
         queen.ValidateCoordinates();
 
         King blackKing = new King();
+        blackKing.color = FigureColor.Black;
         blackKing.ValidateCoordinates();
 
         King whiteKing = new King();
+        whiteKing.color = FigureColor.White;
         whiteKing.ValidateCoordinates();
 
-        Validate validate = new Validate();
-        validate.CheckIfTheCoordinatesAreEqual(rook1.input, rook2.input,queen.input,whiteKing.input,blackKing.input);
-        validate.IsTheKingInCheck(rook1.input, rook2.input, queen.input, whiteKing.input, blackKing.input);
+        ChessBoard chess = new ChessBoard();
 
+        Validate validate = new Validate();
+        bool differentLocation=validate.CheckIfTheCoordinatesAreEqual(rook1.input, rook2.input,queen.input,blackKing.input, whiteKing.input);
+        bool noCheck =  validate.IsTheKingInCheck(rook1.input, rook2.input, queen.input, blackKing.input, whiteKing.input);
+        bool validCoordinate = validate.CheckCoord(rook1.valid, rook2.valid, queen.valid, blackKing.valid, whiteKing.valid);
+        
         PrintTeams printTeams = new PrintTeams();
-        printTeams.PrintTeamsOnTheBoard();
+        if ((validCoordinate == true) && (noCheck == true) && (differentLocation == true))
+        {
+            printTeams.PrintFiguresLetterOnTheBoard(chess.array, rook1.input, rook2.input, queen.input, blackKing.input, whiteKing.input);
+        }
+        else
+        {
+            Console.WriteLine("Smth is wrong, try again!");
+        }
     }
 }
