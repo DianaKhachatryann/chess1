@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ClassicGame;
-
 class Validate
 {
     //chisht e nermutsats coordy te che +

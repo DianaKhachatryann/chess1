@@ -28,7 +28,7 @@ class PrintTeams
                     if ((i + j) % 2 == 0)
                     {
                         array[i, j] = "   ";
-                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
                     }
                     else
                     {
@@ -36,31 +36,31 @@ class PrintTeams
                         Console.BackgroundColor = ConsoleColor.DarkGray;
                     }
                 }
-                if (i == currentCoordRook1.number-1 && j == (int)currentCoordRook1.letter)
+                if (i == currentCoordRook1.number - 1 && j == (int)currentCoordRook1.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     array[i, j] = "";
                     Console.Write($" {SymbolOfFigure.R} ");
                 }
-                if (i == currentCoordRook2.number-1 && j == (int)currentCoordRook2.letter)
+                if (i == currentCoordRook2.number - 1 && j == (int)currentCoordRook2.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     array[i, j] = "";
                     Console.Write($" {SymbolOfFigure.R} ");
                 }
-                if (i == currentCoordQueen.number-1 && j == (int)currentCoordQueen.letter)
+                if (i == currentCoordQueen.number - 1 && j == (int)currentCoordQueen.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     array[i, j] = "";
                     Console.Write($" {SymbolOfFigure.Q} ");
                 }
-                if (i == currentCoordBlackKing.number-1 && j == (int)currentCoordBlackKing.letter)
+                if (i == currentCoordBlackKing.number - 1 && j == (int)currentCoordBlackKing.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.Black;
                     array[i, j] = "";
                     Console.Write($" {SymbolOfFigure.K} ");
                 }
-                if (i == currentCoordWhiteKing.number-1 && j == (int)currentCoordWhiteKing.letter)
+                if (i == currentCoordWhiteKing.number - 1 && j == (int)currentCoordWhiteKing.letter)
                 {
                     Console.ForegroundColor = ConsoleColor.White;
                     array[i, j] = "";
